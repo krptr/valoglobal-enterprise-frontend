@@ -1,0 +1,394 @@
+/* ==========================================================================
+   1. FONTS (Self-contained inside CSS; no index.html <link> tags needed)
+   ========================================================================== */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/* ==========================================================================
+   2. TAILWIND V4 SETUP
+   ========================================================================== */
+@import "tailwindcss";
+
+/* Toggled by adding/removing the 'dark' class on <html class="dark"> or documentElement */
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   3. THEME TOKEN MAPPINGS (Generates classes like bg-primary, text-ink, etc.)
+   ========================================================================== */
+@theme inline {
+  --font-sans:
+    "Archivo", ui-sans-serif, system-ui, sans-serif; /* Use via font-sans on headlines, nav links, paragraphs */
+  --font-mono:
+    "JetBrains Mono", ui-monospace, monospace; /* Use via font-mono on telemetry numbers, ticker, SLA labels, eyebrows */
+
+  --radius-sm: calc(
+    var(--radius) - 2px
+  ); /* 2px: use via rounded-sm on input fields, buttons, small status chips */
+  --radius-md: var(
+    --radius
+  ); /* 4px: use via rounded-md on quote boxes, metric cards, analytics panels */
+  --radius-lg: var(
+    --radius
+  ); /* 4px: use via rounded-lg on dropdowns, modal windows */
+  --radius-xl: calc(
+    var(--radius) + 2px
+  ); /* 6px: use via rounded-xl on the large interactive logistics map wrapper */
+
+  --color-background: var(
+    --background
+  ); /* Use via bg-background on <body>, main sections, and the new CTA block */
+  --color-foreground: var(
+    --foreground
+  ); /* Use via text-foreground on primary body copy, titles, and section headers */
+  --color-card: var(
+    --card
+  ); /* Use via bg-card on quote calculators, pricing cards, lead list panels */
+  --color-card-foreground: var(
+    --card-foreground
+  ); /* Use via text-card-foreground on text inside form panels and cards */
+  --color-popover: var(
+    --popover
+  ); /* Use via bg-popover on tooltips, popovers, select dropdown menus */
+  --color-popover-foreground: var(
+    --popover-foreground
+  ); /* Use via text-popover-foreground inside dropdown menus */
+
+  --color-primary: var(
+    --primary
+  ); /* Use via bg-primary, text-primary, border-primary on red brand items & CTA highlights */
+  --color-primary-foreground: var(
+    --primary-foreground
+  ); /* Use via text-primary-foreground on text inside red CTA buttons */
+  --color-secondary: var(
+    --secondary
+  ); /* Use via bg-secondary on inactive corridor filter tabs and badge fills */
+  --color-secondary-foreground: var(
+    --secondary-foreground
+  ); /* Use via text-secondary-foreground on inactive tab labels */
+  --color-muted: var(
+    --muted
+  ); /* Use via bg-muted on disabled inputs, inactive pills, table header backgrounds */
+  --color-muted-foreground: var(
+    --muted-foreground
+  ); /* Use via text-muted-foreground on subtitles, helper copy, SLA text */
+  --color-accent: var(
+    --accent
+  ); /* Use via bg-accent on table row hover states, tag highlights */
+  --color-accent-foreground: var(
+    --accent-foreground
+  ); /* Use via text-accent-foreground on hover label text */
+  --color-destructive: var(
+    --destructive
+  ); /* Use via bg-destructive, text-destructive on error messages, delete buttons */
+  --color-destructive-foreground: var(
+    --destructive-foreground
+  ); /* Use via text-destructive-foreground inside error alerts */
+
+  --color-border: var(
+    --border
+  ); /* Use via border-border on divider lines, grid overlays, card outlines */
+  --color-input: var(
+    --input
+  ); /* Use via border-input on form text inputs and select dropdown borders */
+  --color-ring: var(
+    --ring
+  ); /* Use via ring-ring on input focus outlines when clicked or tabbed */
+
+  --color-ink: var(
+    --ink
+  ); /* Use via bg-ink, text-ink on dark secondary buttons ("Explore services") */
+  --color-ink-foreground: var(
+    --ink-foreground
+  ); /* Use via text-ink-foreground on text inside secondary ink buttons */
+  --color-success: var(
+    --success
+  ); /* Use via bg-success, text-success on live telemetry pulsing dot & won deals */
+
+  --color-chart-1: var(
+    --chart-1
+  ); /* Use via fill-chart-1 or stroke-chart-1 for analytics primary bar (Red) */
+  --color-chart-2: var(
+    --chart-2
+  ); /* Use via fill-chart-2 on analytics secondary metrics (Dark Ink / White) */
+  --color-chart-3: var(
+    --chart-3
+  ); /* Use via fill-chart-3 on analytics mid-tone bars (Medium Gray) */
+  --color-chart-4: var(
+    --chart-4
+  ); /* Use via fill-chart-4 on analytics tertiary bars (Light Coral / Accent) */
+  --color-chart-5: var(
+    --chart-5
+  ); /* Use via fill-chart-5 on analytics muted bars (Subtle Slate) */
+
+  --color-hero: var(
+    --hero
+  ); /* Use via bg-hero on the background canvas of the interactive world map */
+  --color-hero-foreground: var(
+    --hero-foreground
+  ); /* Use via text-hero-foreground on map hub names ("Lagos", "Rotterdam") */
+  --color-hero-muted: var(
+    --hero-muted
+  ); /* Use via text-hero-muted on map corridor descriptions & live ticker text */
+  --color-hero-line: var(
+    --hero-line
+  ); /* Use via stroke-hero-line / border-hero-line on map coordinate grid lines */
+
+  --color-footer: var(
+    --footer
+  ); /* Use via bg-footer on the bottom <footer> section wrapper */
+  --color-footer-foreground: var(
+    --footer-foreground
+  ); /* Use via text-footer-foreground on footer company title, headers */
+  --color-footer-muted: var(
+    --footer-muted
+  ); /* Use via text-footer-muted on footer links ("Privacy", "Terms", "Routes") */
+  --color-footer-line: var(
+    --footer-line
+  ); /* Use via border-footer-line on the horizontal divider above the footer */
+}
+
+/* ==========================================================================
+   4. LIGHT MODE VALUES (:root)
+   ========================================================================== */
+:root {
+  --radius: 0.25rem; /* Base 4px corner radius across buttons, inputs, and panels */
+
+  --background: #ffffff; /* Main page background across hero, body, and CTA sections */
+  --foreground: #212121; /* Primary near-black body copy, section titles, and CTA headings */
+
+  --card: #ffffff; /* Commercial quote form box, lead list cards, metric stat cards */
+  --card-foreground: #212121; /* Text and field labels inside card containers */
+  --popover: #ffffff; /* Origin and destination airport/seaport dropdown menus */
+  --popover-foreground: #212121; /* Text inside select popovers and option lists */
+
+  --primary: #ff0033; /* ValoGlobal Red: CTA buttons, pulsing dots, "24 hours." highlight text */
+  --primary-foreground: #ffffff; /* Crisp white text inside red buttons and active badges */
+
+  --secondary: #f5f5f5; /* Inactive corridor tabs ("AFRICA TO EUROPE"), pill backgrounds */
+  --secondary-foreground: #212121; /* Dark text on inactive corridor selection buttons */
+  --muted: #f5f5f5; /* Search bar fills, disabled button fills, neutral background bars */
+  --muted-foreground: #737373; /* SLA subtitle, "Enterprise B2B shippers only", form hints */
+
+  --accent: #fff0f2; /* Light crimson wash on table row hover states and tag clicks */
+  --accent-foreground: #212121; /* Text color during table row or item hover */
+
+  --destructive: #ff0033; /* Form validation error banners and warning messages */
+  --destructive-foreground: #ffffff; /* Text color inside destructive warning banners */
+
+  --border: #e5e5e5; /* 1px border dividers, section separation lines, card edges */
+  --input: #e0e0e0; /* Neutral inactive border around cargo weight, dimensions, and email fields */
+  --ring: #ff0033; /* Red focus halo when clicking or tabbing into text inputs */
+
+  --ink: #212121; /* "Explore services" button, "Download guide" button, contrast chips */
+  --ink-foreground: #ffffff; /* White text inside near-black secondary action buttons */
+
+  --success: #16a34a; /* Green live dot next to "Active Fleet Telemetry" and won deals */
+
+  --chart-1: #ff0033; /* Red series on admin analytics bar charts and funnel steps */
+  --chart-2: #212121; /* Dark ink series on analytics charts (Traffic, scroll depth) */
+  --chart-3: #737373; /* Neutral gray series for mid-funnel drop-off analytics */
+  --chart-4: #ff6685; /* Light red secondary series for comparisons */
+  --chart-5: #d4d4d4; /* Soft gray series for base baseline volume metrics */
+
+  --hero: #141414; /* Deep dark background canvas for the interactive logistics world map */
+  --hero-foreground: #ffffff; /* White map hub markers ("Lagos", "Rotterdam", "Dubai") */
+  --hero-muted: #a3a3a3; /* Live telemetry ticker text ("Vessel Atlas-09 docked at Lagos Port") */
+  --hero-line: rgba(
+    255,
+    255,
+    255,
+    0.15
+  ); /* Subtle coordinate grid lines across world map */
+
+  --footer: #f7f7f7; /* Bottom page footer section background */
+  --footer-foreground: #212121; /* "ValoGlobal Inc." branding, column title text */
+  --footer-muted: #737373; /* Legal disclaimers, route navigation links, copyright notice */
+  --footer-line: rgba(
+    33,
+    33,
+    33,
+    0.12
+  ); /* 1px top border line separating the content from footer */
+}
+
+/* ==========================================================================
+   5. DARK MODE VALUES (.dark)
+   ========================================================================== */
+.dark {
+  --background: #171717; /* Dark theme page background across all routes and CTA */
+  --foreground: #ffffff; /* Clean white headings, body text, and section copy */
+
+  --card: #212121; /* Dark near-black card surfaces for forms, pricing, and analytics */
+  --card-foreground: #ffffff; /* White text and labels inside dark cards and panels */
+  --popover: #212121; /* Dark popovers, tooltips, and origin/destination dropdowns */
+  --popover-foreground: #ffffff; /* White text inside dark dropdown select menus */
+
+  --primary: #ff0033; /* Red buttons and "24 hours." highlight stay vibrant red in dark mode */
+  --primary-foreground: #ffffff; /* White text inside red CTA buttons */
+
+  --secondary: #2a2a2a; /* Inactive corridor tabs, muted pills, dark mode secondary tags */
+  --secondary-foreground: #ffffff; /* Inactive corridor button label text */
+  --muted: #262626; /* Inactive state containers, disabled input fills */
+  --muted-foreground: #a3a3a3; /* Secondary notes, helper text, and timestamp details */
+
+  --accent: #3b1419; /* Deep wine crimson fill when hovering over interactive list rows */
+  --accent-foreground: #ffffff; /* Text color during table row hover in dark mode */
+
+  --destructive: #ff0033; /* Dark mode error state borders and validation messages */
+  --destructive-foreground: #ffffff; /* Text inside error validation badges */
+
+  --border: rgba(
+    255,
+    255,
+    255,
+    0.12
+  ); /* Subtle 1px dividers between cards and sections */
+  --input: rgba(
+    255,
+    255,
+    255,
+    0.18
+  ); /* Input borders contrasting against dark backgrounds */
+  --ring: #ff0033; /* Red focus ring around inputs in dark mode */
+
+  --ink: #ffffff; /* Inverts to crisp white button in dark mode ("Explore services") */
+  --ink-foreground: #212121; /* Dark text inside inverted ink buttons */
+
+  --success: #22c55e; /* Vibrant green live indicator dot in dark mode */
+
+  --chart-1: #ff0033; /* Red analytics series in dark mode */
+  --chart-2: #ffffff; /* Inverted white series for maximum contrast on dark charts */
+  --chart-3: #8e8e8e; /* Muted gray series for secondary analytics metrics */
+  --chart-4: #ff6685; /* Soft crimson comparison series */
+  --chart-5: #404040; /* Dark gray baseline metric series */
+
+  --hero: #0f0f0f; /* Pitch-black canvas for the interactive logistics world map */
+  --hero-foreground: #ffffff; /* White map hub city labels ("Lagos", "Dubai", "Rotterdam") */
+  --hero-muted: #8e8e8e; /* Telemetry ticker feed text in dark mode */
+  --hero-line: rgba(
+    255,
+    255,
+    255,
+    0.12
+  ); /* World map coordinate grid lines in dark mode */
+
+  --footer: #111111; /* Deep charcoal footer background */
+  --footer-foreground: #ffffff; /* White footer branding and column headings */
+  --footer-muted: #a3a3a3; /* Muted navigation links in footer */
+  --footer-line: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Subtle divider line above dark footer */
+}
+
+/* ==========================================================================
+   6. GLOBAL BASE STYLES
+   ========================================================================== */
+@layer base {
+  * {
+    border-color: var(
+      --color-border
+    ); /* Sets default border color across all <div>, <section>, <button> */
+  }
+  body {
+    background-color: var(
+      --color-background
+    ); /* Sets the primary body canvas color */
+    color: var(--color-foreground); /* Sets default readable text color */
+    font-family: var(
+      --font-sans
+    ); /* Applies Archivo typography site-wide by default */
+    -webkit-font-smoothing: antialiased; /* Crisp text rendering on WebKit / macOS / iOS */
+    -moz-osx-font-smoothing: grayscale; /* Crisp text rendering on Firefox macOS */
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.025em; /* Tight negative letter tracking for modern Swiss editorial style */
+  }
+}
+
+/* ==========================================================================
+   7. REUSABLE COMPONENT UTILITY CLASSES
+   ========================================================================== */
+
+/* Eyebrow tag: used directly above <h1> and <h2> headers on hero, services, and admin */
+/* Example: <p className="eyebrow">Enterprise logistics · Est. 1998</p> */
+@utility eyebrow {
+  @apply font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-primary;
+}
+
+/* Panel card wrapper: used on metric summary cards, quote calculator box, lead cards */
+/* Example: <div className="panel p-6">...</div> */
+@utility panel {
+  @apply rounded-md border bg-card text-card-foreground;
+}
+
+/* Form input styling: used on weight inputs, email fields, and custom select controls */
+/* Example: <input type="number" placeholder="Enter weight in kg" className="field" /> */
+@utility field {
+  @apply h-11 w-full rounded-sm border border-input bg-background px-3 text-sm outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary;
+}
+
+/* Base button properties inherited by all interactive buttons below */
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-sm px-5 h-11 text-sm font-semibold transition-colors disabled:opacity-50 disabled:pointer-events-none;
+}
+
+/* Primary brand button: used on "Get a Commercial Quote", "Calculate rate", new CTA */
+/* Example: <button className="btn-primary">Get a Commercial Quote</button> */
+@utility btn-primary {
+  @apply btn bg-primary text-primary-foreground hover:bg-primary/90 active:scale-[0.99];
+}
+
+/* Contrast button: used on "Explore services", "Download guide", secondary hero CTA */
+/* Example: <button className="btn-ink">Explore services</button> */
+@utility btn-ink {
+  @apply btn bg-ink text-ink-foreground hover:opacity-90 active:scale-[0.99];
+}
+
+/* Transparent outline button: used on corridor toggle pills ("AFRICA TO EUROPE", "TRANS-PACIFIC") */
+/* Example: <button className="btn-outline">AFRICA TO EUROPE</button> */
+@utility btn-outline {
+  @apply btn border border-border bg-transparent hover:bg-muted text-foreground;
+}
+
+/* Blueprint grid pattern: used on hero background and the new 24-hour SLA CTA section */
+/* Example: <section className="grid-lines py-20">...</section> */
+@utility grid-lines {
+  background-image:
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ==========================================================================
+   8. MAP & UI ANIMATIONS
+   ========================================================================== */
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Used on SVG <path> elements that draw routes like Lagos to Rotterdam or Lagos to Dubai */
+/* Example: <path d="..." className="route-arc stroke-primary" strokeWidth="2" fill="none" /> */
+.route-arc {
+  stroke-dasharray: 600; /* Sets stroke segment dash length for drawing animation */
+  stroke-dashoffset: 600; /* Hides line initially so it animates forward */
+  animation: dash 2.4s ease-out forwards; /* Smooth corridor line-drawing animation */
+  transition: opacity 300ms ease; /* Smooth fade when switching selected corridors */
+}
+
+/* Disables intense animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .route-arc,
+  .animate-ping,
+  .animate-pulse {
+    animation: none;
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+}
