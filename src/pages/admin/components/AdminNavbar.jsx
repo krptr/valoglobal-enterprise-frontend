@@ -1,0 +1,9 @@
+function AdminNavbar() {
+  return (
+    <div>
+      <h1>Home Page</h1>
+    </div>
+  );
+}
+
+export { AdminNavbar };
