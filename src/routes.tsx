@@ -26,34 +26,34 @@ const routes = [
   {
     path: "/admin",
     element: <AdminLayout />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage homePath="/admin" />,
     children: [
       { index: true, element: <Overview /> },
       { path: "leadmanager", element: <LeadManager /> },
       { path: "analytics", element: <Analytics /> },
-      { path: "*", element: <NotFoundPage /> },
+      { path: "*", element: <NotFoundPage homePath="/admin" /> },
     ],
   },
 
   {
     path: "/admin/login",
     element: <AdminLogin />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage homePath="/admin/login" />,
   },
   {
     path: "/demo/login",
     element: <DemoLogin />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage homePath="/demo/login" />,
   },
   {
     path: "/demo",
     element: <AdminLayout />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage homePath="/demo" />,
     children: [
       { index: true, element: <Overview /> },
       { path: "leadmanager", element: <LeadManager /> },
       { path: "analytics", element: <Analytics /> },
-      { path: "*", element: <NotFoundPage /> },
+      { path: "*", element: <NotFoundPage homePath="/demo" /> },
     ],
   },
 ];
