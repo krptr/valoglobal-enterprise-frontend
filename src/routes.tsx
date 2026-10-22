@@ -3,6 +3,8 @@ import { AdminLayout } from "./pages/admin/AdminLayout";
 import { HomePage } from "./pages/home/HomePage";
 import { ServicePage } from "./pages/services/ServicePage";
 import { QuotePage } from "./pages/quote/QuotePage";
+import { Industries } from "./pages/industries/Industries";
+import { Tracking } from "./pages/tracking/Tracking";
 import { Overview } from "./pages/admin/overview/Overview";
 import { LeadManager } from "./pages/admin/lead/LeadManager";
 import { Analytics } from "./pages/admin/analytics/Analytics";
@@ -20,6 +22,8 @@ const routes = [
       { index: true, element: <HomePage /> },
       { path: "service", element: <ServicePage /> },
       { path: "quote", element: <QuotePage /> },
+      { path: "industries", element: <Industries /> },
+      { path: "tracking", element: <Tracking /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },

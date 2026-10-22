@@ -2,224 +2,199 @@
 @source "../src";
 @import "tw-animate-css";
 
-/* Sets Archivo as the default font for the whole site */
-body {
-  font-family: "Archivo", sans-serif;
-}
-
-/* Sets JetBrains Mono for code, data, or mono classes */
-code,
-pre,
-.mono {
-  font-family: "JetBrains Mono", monospace;
-}
-
 @custom-variant dark (&:is(.dark *));
 
-@theme static {
+@theme inline {
+  /* Typography */
   --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  /* Primary */
-  --color-primary: rgb(255 0 51);
-  --color-surface-tint: rgb(255 0 51);
-  --color-on-primary: rgb(255 255 255);
-  --color-primary-container: rgb(252 234 232);
-  --color-on-primary-container: rgb(30 30 30);
-
-  /* Secondary */
-  --color-secondary: rgb(245 245 245);
-  --color-on-secondary: rgb(30 30 30);
-  --color-secondary-container: rgb(245 245 245);
-  --color-on-secondary-container: rgb(30 30 30);
-
-  /* Tertiary */
-  --color-tertiary: rgb(140 74 96);
-  --color-on-tertiary: rgb(255 255 255);
-  --color-tertiary-container: rgb(255 217 226);
-  --color-on-tertiary-container: rgb(112 51 72);
-
-  /* Error (shares the brand red) */
-  --color-error: rgb(255 0 51);
-  --color-on-error: rgb(255 255 255);
-  --color-error-container: rgb(255 218 214);
-  --color-on-error-container: rgb(147 0 10);
-
-  /* Background & surface */
-  --color-background: rgb(255 255 255);
-  --color-on-background: rgb(30 30 30);
-  --color-surface: rgb(255 255 255);
-  --color-on-surface: rgb(30 30 30);
-  --color-surface-variant: rgb(243 243 243);
-  --color-on-surface-variant: rgb(99 99 99);
-  --color-outline: rgb(215 215 215);
-  --color-outline-variant: rgb(222 222 222);
-  --color-shadow: rgb(0 0 0);
-  --color-scrim: rgb(0 0 0);
-  --color-inverse-surface: rgb(30 30 30);
-  --color-inverse-on-surface: rgb(255 255 255);
-  --color-inverse-primary: rgb(255 179 175);
-
-  /* Fixed */
-  --color-primary-fixed: rgb(255 218 216);
-  --color-on-primary-fixed: rgb(59 8 10);
-  --color-primary-fixed-dim: rgb(255 179 175);
-  --color-on-primary-fixed-variant: rgb(115 51 50);
-  --color-secondary-fixed: rgb(245 245 245);
-  --color-on-secondary-fixed: rgb(30 30 30);
-  --color-secondary-fixed-dim: rgb(222 222 222);
-  --color-on-secondary-fixed-variant: rgb(80 80 80);
-  --color-tertiary-fixed: rgb(255 217 226);
-  --color-on-tertiary-fixed: rgb(58 7 29);
-  --color-tertiary-fixed-dim: rgb(255 177 200);
-  --color-on-tertiary-fixed-variant: rgb(112 51 72);
-
-  /* Surface containers */
-  --color-surface-dim: rgb(222 222 222);
-  --color-surface-bright: rgb(255 255 255);
-  --color-surface-container-lowest: rgb(255 255 255);
-  --color-surface-container-low: rgb(255 255 255);
-  --color-surface-container: rgb(255 255 255);
-  --color-surface-container-high: rgb(245 245 245);
-  --color-surface-container-highest: rgb(9 9 9);
-
-  /* Brand extras */
-  --color-success: rgb(37 152 77);
-  --color-on-success: rgb(255 255 255);
-  --color-chart-1: rgb(255 0 51);
-  --color-chart-2: rgb(30 30 30);
-  --color-chart-3: rgb(113 113 113);
-  --color-chart-4: rgb(251 151 149);
-  --color-chart-5: rgb(190 190 190);
-  --color-on-surface-container-high: rgb(30 30 30);
-  --color-on-surface-container-high-variant: rgb(80 80 80);
-  --color-on-surface-container-highest: rgb(255 255 255);
-  --color-on-surface-container-highest-variant: rgb(199 199 199);
-  --color-surface-container-highest-outline: rgb(255 255 255 / 30%);
-  --color-surface-container-high-outline: rgb(30 30 30 / 20%);
-}
-
-/*
- * Compatibility names used by the site's components, pointed at the roles above.
- * They stay in sync automatically in light and dark mode.
- */
-@theme static {
-  --radius: 0.25rem;
+  /* Radius */
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 2px);
 
-  --color-foreground: var(--color-on-background);
-  --color-card: var(--color-surface-container);
-  --color-card-foreground: var(--color-on-surface);
-  --color-popover: var(--color-surface-container);
-  --color-popover-foreground: var(--color-on-surface);
-  --color-primary-foreground: var(--color-on-primary);
-  --color-secondary-foreground: var(--color-on-secondary-container);
-  --color-muted: var(--color-surface-variant);
-  --color-muted-foreground: var(--color-on-surface-variant);
-  --color-accent: var(--color-primary-container);
-  --color-accent-foreground: var(--color-on-primary-container);
-  --color-destructive: var(--color-error);
-  --color-destructive-foreground: var(--color-on-error);
-  --color-border: var(--color-outline-variant);
-  --color-input: var(--color-outline);
-  --color-ring: var(--color-primary);
-  --color-ink: var(--color-inverse-surface);
-  --color-ink-foreground: var(--color-inverse-on-surface);
-  --color-footer: var(--color-surface-container-high);
-  --color-footer-foreground: var(--color-on-surface-container-high);
-  --color-footer-muted: var(--color-on-surface-container-high-variant);
-  --color-footer-line: var(--color-surface-container-high-outline);
-  --color-hero: var(--color-surface-container-highest);
-  --color-hero-foreground: var(--color-on-surface-container-highest);
-  --color-hero-muted: var(--color-on-surface-container-highest-variant);
-  --color-hero-line: var(--color-surface-container-highest-outline);
+  /* Core shadcn / Tailwind semantic colours */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand-specific semantic colours */
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
+
+  --color-footer: var(--footer);
+  --color-footer-foreground: var(--footer-foreground);
+  --color-footer-muted: var(--footer-muted);
+  --color-footer-line: var(--footer-line);
+
+  --color-hero: var(--hero);
+  --color-hero-foreground: var(--hero-foreground);
+  --color-hero-muted: var(--hero-muted);
+  --color-hero-line: var(--hero-line);
+
+  /* Supporting colours */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-tertiary-container-foreground: var(--tertiary-container-foreground);
+
+  /* Charts */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+:root {
+  --radius: 0.25rem;
+  --primary: rgb(255 0 51);
+  --primary-foreground: rgb(255 255 255);
+  --background: rgb(255 255 255);
+  --foreground: rgb(30 30 30);
+  --card: rgb(255 255 255);
+  --card-foreground: rgb(30 30 30);
+  --popover: rgb(255 255 255);
+  --popover-foreground: rgb(30 30 30);
+  --secondary: rgb(245 245 245);
+  --secondary-foreground: rgb(30 30 30);
+  --muted: rgb(243 243 243);
+  --muted-foreground: rgb(99 99 99);
+  --accent: rgb(252 234 232);
+  --accent-foreground: rgb(30 30 30);
+  --destructive: rgb(255 0 51);
+  --destructive-foreground: rgb(255 255 255);
+  --success: rgb(37 152 77);
+  --success-foreground: rgb(255 255 255);
+  --border: rgb(222 222 222);
+  --input: rgb(215 215 215);
+  --ring: rgb(255 0 51);
+  --tertiary: rgb(140 74 96);
+  --tertiary-foreground: rgb(255 255 255);
+  --tertiary-container: rgb(255 217 226);
+  --tertiary-container-foreground: rgb(112 51 72);
+  --ink: rgb(30 30 30);
+  --ink-foreground: rgb(255 255 255);
+  --footer: rgb(245 245 245);
+  --footer-foreground: rgb(30 30 30);
+  --footer-muted: rgb(80 80 80);
+  --footer-line: rgb(30 30 30 / 20%);
+  --hero: rgb(9 9 9);
+  --hero-foreground: rgb(255 255 255);
+  --hero-muted: rgb(199 199 199);
+  --hero-line: rgb(255 255 255 / 30%);
+  --chart-1: rgb(255 0 51);
+  --chart-2: rgb(30 30 30);
+  --chart-3: rgb(113 113 113);
+  --chart-4: rgb(251 151 149);
+  --chart-5: rgb(190 190 190);
 }
 
 .dark {
-  --color-primary: rgb(255 0 51);
-  --color-surface-tint: rgb(255 0 51);
-  --color-on-primary: rgb(255 255 255);
-  --color-primary-container: rgb(71 32 32);
-  --color-on-primary-container: rgb(255 255 255);
+  --background: rgb(20 20 20);
+  --foreground: rgb(255 255 255);
+  --card: rgb(30 30 30);
+  --card-foreground: rgb(255 255 255);
+  --popover: rgb(30 30 30);
+  --popover-foreground: rgb(255 255 255);
+  --primary: rgb(255 0 51);
+  --primary-foreground: rgb(255 255 255);
+  --secondary: rgb(41 41 41);
+  --secondary-foreground: rgb(255 255 255);
+  --muted: rgb(38 38 38);
+  --muted-foreground: rgb(164 164 164);
+  --accent: rgb(71 32 32);
+  --accent-foreground: rgb(255 255 255);
+  --destructive: rgb(255 0 51);
+  --destructive-foreground: rgb(255 255 255);
+  --success: rgb(37 152 77);
+  --success-foreground: rgb(255 255 255);
+  --border: rgb(255 255 255 / 12%);
+  --input: rgb(255 255 255 / 18%);
+  --ring: rgb(255 0 51);
 
-  --color-secondary: rgb(245 245 245);
-  --color-on-secondary: rgb(30 30 30);
-  --color-secondary-container: rgb(41 41 41);
-  --color-on-secondary-container: rgb(255 255 255);
+  --tertiary: rgb(255 177 200);
+  --tertiary-foreground: rgb(84 29 50);
+  --tertiary-container: rgb(112 51 72);
+  --tertiary-container-foreground: rgb(255 217 226);
 
-  --color-tertiary: rgb(255 177 200);
-  --color-on-tertiary: rgb(84 29 50);
-  --color-tertiary-container: rgb(112 51 72);
-  --color-on-tertiary-container: rgb(255 217 226);
+  --ink: rgb(255 255 255);
+  --ink-foreground: rgb(30 30 30);
 
-  --color-error: rgb(255 0 51);
-  --color-on-error: rgb(255 255 255);
-  --color-error-container: rgb(147 0 10);
-  --color-on-error-container: rgb(255 218 214);
+  --footer: rgb(9 9 9);
+  --footer-foreground: rgb(255 255 255);
+  --footer-muted: rgb(164 164 164);
+  --footer-line: rgb(255 255 255 / 20%);
 
-  --color-background: rgb(20 20 20);
-  --color-on-background: rgb(255 255 255);
-  --color-surface: rgb(20 20 20);
-  --color-on-surface: rgb(255 255 255);
-  --color-surface-variant: rgb(38 38 38);
-  --color-on-surface-variant: rgb(164 164 164);
-  --color-outline: rgb(255 255 255 / 18%);
-  --color-outline-variant: rgb(255 255 255 / 12%);
-  --color-shadow: rgb(0 0 0);
-  --color-scrim: rgb(0 0 0);
-  --color-inverse-surface: rgb(255 255 255);
-  --color-inverse-on-surface: rgb(30 30 30);
-  --color-inverse-primary: rgb(255 0 51);
+  --hero: rgb(9 9 9);
+  --hero-foreground: rgb(255 255 255);
+  --hero-muted: rgb(199 199 199);
+  --hero-line: rgb(255 255 255 / 30%);
 
-  --color-primary-fixed: rgb(255 218 216);
-  --color-on-primary-fixed: rgb(59 8 10);
-  --color-primary-fixed-dim: rgb(255 179 175);
-  --color-on-primary-fixed-variant: rgb(115 51 50);
-  --color-secondary-fixed: rgb(245 245 245);
-  --color-on-secondary-fixed: rgb(30 30 30);
-  --color-secondary-fixed-dim: rgb(222 222 222);
-  --color-on-secondary-fixed-variant: rgb(80 80 80);
-  --color-tertiary-fixed: rgb(255 217 226);
-  --color-on-tertiary-fixed: rgb(58 7 29);
-  --color-tertiary-fixed-dim: rgb(255 177 200);
-  --color-on-tertiary-fixed-variant: rgb(112 51 72);
-
-  --color-surface-dim: rgb(20 20 20);
-  --color-surface-bright: rgb(41 41 41);
-  --color-surface-container-lowest: rgb(9 9 9);
-  --color-surface-container-low: rgb(20 20 20);
-  --color-surface-container: rgb(30 30 30);
-  --color-surface-container-high: rgb(9 9 9);
-  --color-surface-container-highest: rgb(9 9 9);
-
-  --color-success: rgb(37 152 77);
-  --color-on-success: rgb(255 255 255);
-  --color-chart-1: rgb(255 0 51);
-  --color-chart-2: rgb(255 255 255);
-  --color-chart-3: rgb(128 128 128);
-  --color-chart-4: rgb(251 151 149);
-  --color-chart-5: rgb(72 72 72);
-  --color-on-surface-container-high: rgb(255 255 255);
-  --color-on-surface-container-high-variant: rgb(164 164 164);
-  --color-on-surface-container-highest: rgb(255 255 255);
-  --color-on-surface-container-highest-variant: rgb(199 199 199);
-  --color-surface-container-highest-outline: rgb(255 255 255 / 30%);
-  --color-surface-container-high-outline: rgb(255 255 255 / 20%);
+  --chart-1: rgb(255 0 51);
+  --chart-2: rgb(255 255 255);
+  --chart-3: rgb(128 128 128);
+  --chart-4: rgb(251 151 149);
+  --chart-5: rgb(72 72 72);
 }
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
 
 @layer base {
   * {
-    border-color: var(--color-border);
+    border-color: var(--border);
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
+
+  code,
+  pre,
+  .mono {
+    font-family: var(--font-mono);
+  }
+
   h1,
   h2,
   h3 {
@@ -227,45 +202,144 @@ pre,
   }
 }
 
+/* ==========================================================================
+   REUSABLE UTILITIES
+   ========================================================================== */
+
 @utility eyebrow {
-  @apply font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-primary;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
 }
+
 @utility panel {
-  @apply rounded-md border bg-card text-card-foreground;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--card);
+  color: var(--card-foreground);
 }
+
 @utility field {
-  @apply h-11 w-full rounded-sm border border-input bg-background px-3 text-sm outline-none transition-colors focus:border-primary;
+  width: 100%;
+  height: 2.75rem;
+  border: 1px solid var(--input);
+  border-radius: calc(var(--radius) - 2px);
+  background-color: var(--background);
+  padding-inline: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  outline: none;
+  transition: border-color 160ms ease;
 }
+
+.field:focus {
+  border-color: var(--primary);
+}
+
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-sm px-5 h-11 text-sm font-semibold transition-colors disabled:opacity-50 disabled:pointer-events-none;
+  display: inline-flex;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: calc(var(--radius) - 2px);
+  padding-inline: 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    border-color 160ms ease,
+    opacity 160ms ease;
 }
+
+.btn:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 @utility btn-primary {
-  @apply btn bg-primary text-primary-foreground hover:bg-primary/90;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
 }
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
 @utility btn-ink {
-  @apply btn bg-ink text-ink-foreground hover:opacity-90;
+  background-color: var(--ink);
+  color: var(--ink-foreground);
 }
+
+.btn-ink:hover {
+  opacity: 0.9;
+}
+
 @utility btn-outline {
-  @apply btn border border-border bg-transparent hover:bg-muted;
+  border: 1px solid var(--border);
+  background-color: transparent;
+  color: var(--foreground);
 }
+
+.btn-outline:hover {
+  background-color: var(--muted);
+}
+
 @utility grid-lines {
   background-image:
-    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
   background-size: 48px 48px;
 }
-@keyframes dash {
+
+/* ==========================================================================
+   MAP, PHOTO, AND MOTION
+   ========================================================================== */
+
+.route-arc {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: route-dash 2.4s ease-out forwards;
+  transition: opacity 300ms ease;
+}
+
+.map-dot {
+  filter: drop-shadow(0 0 4px var(--primary));
+}
+
+.photo-overlay {
+  background: linear-gradient(
+    to top,
+    color-mix(in oklab, var(--background) 92%, transparent),
+    color-mix(in oklab, var(--background) 45%, transparent)
+  );
+}
+
+.photo-overlay-strong {
+  background: linear-gradient(
+    to top,
+    color-mix(in oklab, var(--background) 97%, transparent),
+    color-mix(in oklab, var(--background) 72%, transparent)
+  );
+}
+
+@keyframes route-dash {
   to {
     stroke-dashoffset: 0;
   }
 }
-.route-arc {
-  stroke-dasharray: 600;
-  stroke-dashoffset: 600;
-  animation: dash 2.4s ease-out forwards;
-  transition: opacity 300ms ease;
-}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .route-arc,
   .animate-ping,
   .animate-fade-in {
@@ -273,23 +347,4 @@ pre,
     stroke-dashoffset: 0;
     transition: none;
   }
-}
-
-/* Photo overlay: only used where text sits on top of a photo. */
-.photo-overlay {
-  background: linear-gradient(
-    to top,
-    color-mix(in oklab, var(--color-background) 92%, transparent),
-    color-mix(in oklab, var(--color-background) 45%, transparent)
-  );
-}
-.photo-overlay-strong {
-  background: linear-gradient(
-    to top,
-    color-mix(in oklab, var(--color-background) 97%, transparent),
-    color-mix(in oklab, var(--color-background) 72%, transparent)
-  );
-}
-.map-dot {
-  filter: drop-shadow(0 0 4px var(--color-primary));
 }
