@@ -12,7 +12,7 @@ function NavBar() {
   const isDark = theme === "darkMode";
 
   return (
-    <header className="flex justify-between items-center mx-4 lg:mx-16 xl:mx-32 font-sans py-3">
+    <header className="fixed inset-x-0 top-0 z-50 flex justify-between items-center mx-4 lg:mx-16 xl:mx-32 font-sans py-3">
       <Logo />
 
       {/* Navigation Links */}
@@ -59,7 +59,7 @@ function NavBar() {
       <div className="hidden lg:flex items-center lg:gap-4">
         <NavLink
           to="quote"
-          className={`text-sm py-2 px-2 bg-primary text-secondary font-bold rounded`}
+          className={`text-sm py-2 px-2 bg-primary text-on-primary font-bold rounded`}
         >
           Get a Quote
         </NavLink>
@@ -69,7 +69,7 @@ function NavBar() {
           role="switch"
           aria-checked={isDark}
           aria-label="Toggle theme"
-          className="relative flex items-center cursor-pointer rounded-full border border-border bg-muted p-1"
+          className="relative flex items-center cursor-pointer rounded-full border border-outline-variant bg-surface-variant p-1"
         >
           <span
             className={`absolute left-1 top-1 size-8 rounded-full bg-primary transition-transform duration-300 ${
@@ -79,7 +79,7 @@ function NavBar() {
           <span
             onClick={theme === "lightMode" ? undefined : toggleTheme}
             className={`relative grid size-8 place-items-center ${
-              isDark ? "text-muted-foreground" : "text-primary-foreground"
+              isDark ? "text-on-surface-variant" : "text-on-primary"
             }`}
           >
             <LuSun size={16} />
@@ -87,7 +87,7 @@ function NavBar() {
           <span
             onClick={theme === "darkMode" ? undefined : toggleTheme}
             className={`relative grid size-8 place-items-center ${
-              isDark ? "text-primary-foreground" : "text-muted-foreground"
+              isDark ? "text-on-primary" : "text-on-surface-variant"
             }`}
           >
             <LuMoon size={16} />

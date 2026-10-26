@@ -30,7 +30,7 @@ function MobileNavBar({
         ${isOpen ? "translate-y-0" : "-translate-y-full"}`}
     >
       {/* Top bar */}
-      <div className="flex items-center justify-between border-b border-border px-4 py-3">
+      <div className="flex items-center justify-between border-b border-outline-variant px-4 py-3">
         <Logo />
         <button onClick={closeMobileNav} aria-label="Close menu">
           <LuX size={24} />
@@ -61,17 +61,17 @@ function MobileNavBar({
       </nav>
 
       {/* Actions, pinned to the bottom */}
-      <div className="mt-auto flex flex-col gap-4 border-t border-border p-4">
+      <div className="mt-auto flex flex-col gap-4 border-t border-outline-variant p-4">
         <NavLink
           to="quote"
           onClick={closeMobileNav}
-          className="w-full rounded bg-primary py-3 text-center text-sm font-bold text-secondary"
+          className="w-full rounded bg-primary py-3 text-center text-sm font-bold text-on-primary"
         >
           Get a Quote
         </NavLink>
 
         <div className="flex items-center justify-between">
-          <span className="text-sm text-muted-foreground">
+          <span className="text-sm text-on-surface-variant">
             {theme === "darkMode" ? "Dark Mode" : "Light Mode"}
           </span>
 
@@ -80,7 +80,7 @@ function MobileNavBar({
             role="switch"
             aria-checked={isDark}
             aria-label="Toggle theme"
-            className="relative flex items-center cursor-pointer rounded-full border border-border bg-muted p-1"
+            className="relative flex items-center cursor-pointer rounded-full border border-outline-variant bg-surface-variant p-1"
           >
             <span
               className={`absolute left-1 top-1 size-8 rounded-full bg-primary transition-transform duration-300 ${
@@ -90,7 +90,7 @@ function MobileNavBar({
             <span
               onClick={theme === "lightMode" ? undefined : toggleTheme}
               className={`relative grid size-8 place-items-center ${
-                isDark ? "text-muted-foreground" : "text-primary-foreground"
+                isDark ? "text-on-surface-variant" : "text-on-primary"
               }`}
             >
               <LuSun size={16} />
@@ -98,7 +98,7 @@ function MobileNavBar({
             <span
               onClick={theme === "darkMode" ? undefined : toggleTheme}
               className={`relative grid size-8 place-items-center ${
-                isDark ? "text-primary-foreground" : "text-muted-foreground"
+                isDark ? "text-on-primary" : "text-on-surface-variant"
               }`}
             >
               <LuMoon size={16} />

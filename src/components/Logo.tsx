@@ -1,10 +1,14 @@
+import { Link } from "react-router";
+
 function Logo() {
   return (
     <div>
-      <div className="font-black leading-7 text-2xl">
-        <span className="text-foreground">VALO</span>
-        <span className="text-primary">GLOBAL</span>
-      </div>
+      <Link to="/">
+        <div className="font-black leading-7 text-2xl">
+          <span className="text-on-background">VALO</span>
+          <span className="text-primary">GLOBAL</span>
+        </div>
+      </Link>
     </div>
   );
 }
