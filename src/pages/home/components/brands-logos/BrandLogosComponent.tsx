@@ -1,5 +1,5 @@
 const box =
-  "flex h-20 w-48 shrink-0 items-center justify-center whitespace-nowrap text-zinc-900 dark:text-zinc-100";
+  "flex h-20 w-56 scale-125 shrink-0 items-center justify-center whitespace-nowrap text-zinc-900 dark:text-zinc-100";
 
 export function Akari() {
   return (

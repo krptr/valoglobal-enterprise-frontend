@@ -8,6 +8,7 @@
   /* Typography */
   --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --animate-marquee: marquee 40s linear infinite;
 
   /* Shape */
   --radius-sm: 0.125rem;
@@ -329,6 +330,12 @@
 @keyframes route-dash {
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
   }
 }
 

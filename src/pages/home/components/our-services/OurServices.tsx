@@ -25,7 +25,7 @@ function OurServices() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-[auto_minmax(0,1fr)] md:gap-x-12 mx-4 pt-72 pb-12 md:pt-90 md:mx-12 md:pb-24 lg:py-24 lg:mx-16 xl:mx-32">
       <div className="flex gap-4 md:col-start-1 md:row-start-1">
-        <div className="hidden md:block bg-primary w-1.5 rounded-xl"></div>
+        <div className="hidden md:block bg-primary w-1.5"></div>
         <p className="hidden md:block uppercase font-mono tracking-widest leading-1 text-primary [writing-mode:vertical-rl] rotate-180 self-end">
           What we do
         </p>
@@ -117,7 +117,7 @@ function ServiceTab({ id, Icon, label, onClick, isActive }: ServiceTabProps) {
   return (
     <div
       onClick={onClick}
-      className={`flex items-center gap-4 border border-outline-variant py-5 pl-3 lg:pr-45 rounded-xl cursor-pointer  ${isActive ? "bg-primary text-on-primary [&_svg]:text-on-primary" : "[&_svg]:text-primary"}`}
+      className={`flex items-center gap-4 border border-outline-variant py-5 pl-3 lg:pr-45 rounded-xl shadow-2xl cursor-pointer  ${isActive ? "bg-primary text-on-primary [&_svg]:text-on-primary" : "[&_svg]:text-primary"}`}
     >
       <span className="font-mono text-sm opacity-70">{id}</span>
       <Icon size={25} />
@@ -136,7 +136,7 @@ function ServicePanel({
   to,
 }: ServicePanelProps) {
   return (
-    <div className="flex flex-col lg:grid lg:grid-rows-2 rounded-xl border border-outline-variant">
+    <div className="flex flex-col lg:grid lg:grid-rows-2 rounded-xl border border-outline-variant shadow-2xl">
       <div className="relative aspect-video lg:aspect-auto">
         <picture>
           <source srcSet={image.avif} type="image/avif" />
