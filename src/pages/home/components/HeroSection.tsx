@@ -6,12 +6,12 @@ function HeroSection() {
   const navigate = useNavigate();
 
   return (
-    <section className="relative">
+    <section className="relative shadow-2xl border-b-2 border-outline-variant">
       <div className="h-196 w-full overflow-hidden">
         <img
           src={heroLight}
           alt="Hero Image"
-          decoding="async"
+          fetchPriority="high"
           className="h-full w-full object-cover object-[50%_80%] dark:hidden"
         />
 
@@ -19,16 +19,14 @@ function HeroSection() {
           src={heroDark}
           alt=""
           aria-hidden="true"
-          decoding="async"
+          fetchPriority="high"
           className="h-full w-full object-cover object-[50%_80%] hidden dark:block"
         />
       </div>
 
       <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-        {/* Content wrapper to constrain width and force text alignment */}
-        <div className="max-w-5xl text-center">
-          {/* 3D text using hard drop shadows */}
-          <h1 className="font-sans font-black leading-[0.95] tracking-tight sm:text-6xl md:mt-6 md:text-7xl lg:text-8xl xl:text-[7.5rem] select-none text-on-surface-container-highest drop-shadow-[4px_4px_0px_var(--color-scrim)] md:drop-shadow-[8px_8px_0px_var(--color-scrim)]">
+        <div className="max-w-5xl -mt-32 md:-mt-24 lg:-mt-1 text-center">
+          <h1 className="font-sans font-black leading-[0.95] tracking-tight text-4xl md:text-7xl xl:text-[7.5rem] select-none text-on-surface-container-highest drop-shadow-[4px_4px_0px_var(--color-scrim)] md:drop-shadow-[8px_8px_0px_var(--color-scrim)]">
             Your supply <br /> chain. In <br />
             <span className="text-primary">capable hands.</span>
           </h1>
@@ -40,18 +38,20 @@ function HeroSection() {
         </div>
 
         {/* 3D Interactive Buttons */}
-        <div className="mt-12 flex gap-6">
+        <div className="mt-12 flex flex-col md:flex-row gap-6">
           <button
             onClick={() => navigate("/quote")}
-            className="bg-primary text-on-primary py-3 px-6 font-sans font-bold border-2 border-scrim shadow-[4px_4px_0px_0px_var(--color-scrim)] hover:shadow-[2px_2px_0px_0px_var(--color-scrim)] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-100"
+            className="bg-primary text-on-primary py-3 px-6 font-sans font-bold border-2 border-scrim shadow-[4px_4px_0px_0px_var(--color-scrim)] 
+            hover:shadow-[2px_2px_0px_0px_var(--color-scrim)] hover:translate-x-0.5 hover:translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-100"
           >
             Get a Commercial Quote
           </button>
           <button
             onClick={() => navigate("/service")}
-            className="bg-background text-on-background py-3 px-6 text-base border-2 border-scrim font-sans font-bold shadow-[4px_4px_0px_0px_var(--color-scrim)] hover:shadow-[2px_2px_0px_0px_var(--color-scrim)] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all duration-100"
+            className="bg-on-surface-container-highest text-surface-container-highest py-3 px-6 text-base border-2 border-scrim font-sans font-bold 
+            shadow-[4px_4px_0px_0px_var(--color-scrim)] hover:shadow-[2px_2px_0px_0px_var(--color-scrim)] hover:translate-x-0.5 hover:translate-y-0.5 active:shadow-none active:translate-x-1 active:translate-y-1 transition-all duration-100"
           >
-            Explore services
+            Explore Our Services
           </button>
         </div>
       </div>

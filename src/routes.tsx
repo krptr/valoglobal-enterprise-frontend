@@ -2,6 +2,9 @@ import { App } from "./App";
 import { AdminLayout } from "./pages/admin/AdminLayout";
 import { HomePage } from "./pages/home/HomePage";
 import { ServicePage } from "./pages/services/ServicePage";
+import { CrossBorderFreightPage } from "./pages/services/cross-border-freight/CrossBorderFreightPage";
+import { ContractWarehousingPage } from "./pages/services/contract-warehousing/ContractWarehousingPage";
+import { LastMileDistributionPage } from "./pages/services/last-mile-distribution/LastMileDistributionPage";
 import { QuotePage } from "./pages/quote/QuotePage";
 import { Industries } from "./pages/industries/Industries";
 import { Tracking } from "./pages/tracking/Tracking";
@@ -21,6 +24,9 @@ const routes = [
     children: [
       { index: true, element: <HomePage /> },
       { path: "service", element: <ServicePage /> },
+      { path: "service/freight", element: <CrossBorderFreightPage /> },
+      { path: "service/warehousing", element: <ContractWarehousingPage /> },
+      { path: "service/lastmile", element: <LastMileDistributionPage /> },
       { path: "quote", element: <QuotePage /> },
       { path: "industries", element: <Industries /> },
       { path: "tracking", element: <Tracking /> },
